@@ -1,0 +1,30 @@
+// Create Element By Using DOM
+let inputTxtId = document.getElementById("input-txt-id");
+let inputButtonId = document.getElementById("input-button-id");
+let inputList = document.getElementById("input-list");
+
+inputButtonId.addEventListener("click", () => {
+  let li = document.createElement("li");
+  let divItem = document.createElement("div");
+  let divBtn = document.createElement("div");
+
+  li.append(divItem, divBtn);
+
+  divBtn.parentElement.setAttribute("onclick", "removeItem(event)");
+  divBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+
+  divItem.textContent = inputTxtId.value;
+  li.className = "input-item";
+
+  inputList.append(li);
+
+  inputTxtId.value = "";
+});
+
+//---------------------------
+
+function removeItem(event) {
+  const eventList = event.target.parentNode.parentNode;
+
+  eventList.remove(); // New Way
+}
